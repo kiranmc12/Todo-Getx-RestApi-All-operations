@@ -34,8 +34,7 @@ class ScreenHome extends StatelessWidget {
                 controller: todoController,
               );
             },
-            itemCount: todoController.todoList
-                .length, // Replace with the actual number of notes or items
+            itemCount: 10, // Replace with the actual number of notes or items
           ),
         )),
       ),

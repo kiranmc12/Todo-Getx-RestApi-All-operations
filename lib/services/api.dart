@@ -27,9 +27,17 @@ class Api {
   Future<String> deleteTodo(TodoModel todo) async {
     var url = Uri.parse('$dataUrl/todos/${todo.id}');
     var result = 'false';
-    await http.delete(url).then((value) {
-      return result = 'true';
-    });
+
+    try {
+      var response = await http.delete(url);
+      if (response.statusCode == 200) {
+        print("deleted ${response.statusCode}");
+        result = 'true';
+      }
+    } catch (error) {
+      print('Error deleting todo: $error');
+    }
+
     return result;
   }
 }
